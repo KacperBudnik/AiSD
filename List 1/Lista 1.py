@@ -1,10 +1,23 @@
 def NWD(a,b):
-    if a>b:
-        return NWD(a-b,b)
-    elif b>a:
-        return NWD(a,b-a)
-    else:
-        return a
+    while a!=b:
+        print(a,b)
+        if a>b:
+            if b==1:
+                a=1
+            else:   
+                if a>b*10**3:
+                    a-=b*10**3
+                else:
+                    a-=b
+        else:
+            if a==1:
+                b=1
+            else:
+                if b>a*10**3:
+                    b-=a*10**3
+                else:
+                    b-=a
+    return a
 
 
 class Fraction:
@@ -95,7 +108,9 @@ class Fraction:
 
 class frac:
     
-    mixed=False
+    mixed=False # Normalny czy mieszany
+    precision=0 # Do którego miejsca po przecinku cyfry mają znaczenie. 0-maksynalne
+    decimal=False # Czy wyświetlać w postaci ułamka dziesiętnego (ważniejsze niż mixed)
     
     def __init__(self, Num, Dem=1):
 
@@ -104,30 +119,50 @@ class frac:
         
         self.sign = 1 if Num*Dem>0 else -1 if Num*Dem<0 else 0
         
-        num=Num.as_integer_ratio()
-        dem=Dem.as_integer_ratio()
-                
-        Num=abs(num[0]*dem[1])
-        Dem=abs(num[1]*dem[0])
+        if frac.precision==0:
+            num=Num.as_integer_ratio()
+            dem=Dem.as_integer_ratio()
+            Num=abs(num[0]*dem[1])
+            Dem=abs(num[1]*dem[0])
+        else:
+            Num=int(abs(Num*10**frac.precision))
+            Dem=int(abs(Dem*10**frac.precision))
+
         
         nwd=NWD(Num,Dem)
         self.num=Num//nwd
         self.dem=Dem//nwd
         
     def __add__(self, other):
+        if type(other)!=frac:
+            other=frac(other)
         return frac(self.sign*self.num*other.dem + other.sign*other.num*self.dem, self.dem*other.dem)
     
+    def __radd__(self, other):
+        return self + other
+    
     def __sub__(self, other):
-        return frac(self.sign*self.num*other.dem - other.sign*other.num*self.dem, self.dem*other.dem)   
+        #return frac(self.sign*self.num*other.dem - other.sign*other.num*self.dem, self.dem*other.dem)
+        return self+(-1)*other
+    
+    def __rsub__(self, other):
+        return -1*self+other
     
     def __pow__(self, power):
+        if type(power)==frac:
+            power=power.num/power.dem
         return frac((self.sign*self.num)**power, self.dem**power) if power > 0 else frac((self.sign*self.dem)**(-power), self.num**(-power))
     
+    def __rmul__(self, other):
+        return self*other
+    
     def __mul__(self, other):
+        if type(other)!=frac:
+            other=frac(other)
         return frac(self.sign*other.sign*self.num*other.num, self.dem*other.dem)
     
     def __truediv__(self, other):
-        return self * frac(other.sign*other.dem, other.num)
+        return self * other**(-1)
         
     def __gt__(self,other):
         if self.sign*self.num*other.dem > other.sign*other.num*self.dem:
@@ -151,7 +186,9 @@ class frac:
         return self.dem
     
     def __str__(self):
-        if not self.mixed or self.num//self.dem == 0:
+        if frac.decimal:
+            return str(self.sign*self.num/self.dem)
+        elif not self.mixed or self.num//self.dem == 0:
             return str(self.sign*self.num)+" // "+ str(self.dem) if self.dem != 1 else str(self.sign*self.num)
         else:
             a = self.num//self.dem
@@ -160,3 +197,8 @@ class frac:
 
     def show_mixed():
         frac.mixed=not frac.mixed
+        
+#frac.precision=2
+#a=frac(2,3)
+#b=frac(1,2)
+#b*2

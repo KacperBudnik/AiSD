@@ -1,6 +1,5 @@
 def NWD(a,b):
     while a!=b:
-        #print(a,b)
         if a>b:
             if b==1:
                 a=1
@@ -284,6 +283,7 @@ a/2>=1/2
 1/2>=a/2
 a/2>=frac(1/3)
 1==a
+(a/2).as_integer_ratio()
 
 frac.decimal=True
 k=-f

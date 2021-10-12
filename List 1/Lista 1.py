@@ -30,7 +30,7 @@ def NWD(a,b):
 class Fraction:
     def __init__(self, Num, Dem):
         if type(Num)!=int or type(Dem)!= int:
-            raise ValueError("Muszą być liczby całkowite")
+            raise TypeError("Muszą być liczby całkowite")
         
         if Dem==0:
             raise ValueError("Mianownik musi być różny od zera")
@@ -98,19 +98,6 @@ class Fraction:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 class frac:
     
     mixed=False # Normalny czy mieszany
@@ -118,11 +105,15 @@ class frac:
     decimal=False # Czy wyświetlać w postaci ułamka dziesiętnego (ważniejsze niż mixed)
     
     def __init__(self, Num, Dem=1):
+        
+        if type(Num) not in (float,int, frac) or type(Dem) not in (float,int,frac):
+            raise TypeError("Musisz podać liczbę")
 
         if Dem==0:
             raise ValueError("Mianownik musi być różny od zera")
         
         self.sign = 1 if Num*Dem>0 else -1 if Num*Dem<0 else 0
+        
         
         if frac.precision==0:
             num=Num.as_integer_ratio()
@@ -225,9 +216,6 @@ class frac:
         
     def __repr__(self):
         return self.__str__()
-
-    def show_mixed():
-        frac.mixed=not frac.mixed
         
     def __abs__(self):
         return frac(self*self.sign)
@@ -241,6 +229,11 @@ class frac:
     def __pos__(self):
         return frac(self)
     
+    def __float__(self):
+        return self.sign*self.num/self.dem
+    
+    def __int__(self):
+        return self.sign*(self.num//self.dem)
         
 #frac.precision=2
 #a=frac(2,3)
@@ -289,4 +282,14 @@ frac.decimal=True
 k=-f
 k
 k+f
+
+frac.decimal=False
+
+
+float(f)
+int(f)
+f
+math.sin(f)
+math.sin(math.pi)-math.sin(f)
+math.exp(frac(1,2))-math.e**(1/2)
 """

@@ -1,4 +1,4 @@
-def NWD(a,b):
+def Greatest_common_divisor(a,b):
     while a!=b:
         if a>b:
             if b==1:
@@ -35,10 +35,10 @@ class Fraction:
         if Dem==0:
             raise ValueError("Mianownik musi być różny od zera")
         
-        nwd=NWD(abs(Num),abs(Dem))
+        gcd=Greatest_common_divisor(abs(Num),abs(Dem))
         self.sign = 1 if Num*Dem>0 else -1 if Num*Dem<0 else 0
-        self.num=abs(Num)//nwd
-        self.dem=abs(Dem)//nwd
+        self.num=abs(Num)//gcd
+        self.dem=abs(Dem)//gcd
         
     def __add__(self, other):
         return Fraction(self.sign*self.num*other.dem + other.sign*other.num*self.dem, self.dem*other.dem)
@@ -116,21 +116,21 @@ class frac:
         
         
         if frac.precision==0:
-            num=Num.as_integer_ratio()
-            dem=Dem.as_integer_ratio()
-            Num=abs(num[0]*dem[1])
-            Dem=abs(num[1]*dem[0])
+            num_temp=Num.as_integer_ratio()
+            dem_temp=Dem.as_integer_ratio()
+            num=abs(num_temp[0]*dem_temp[1])
+            dem=abs(num_temp[1]*dem_temp[0])
         else:
-            Num=int(abs(Num*10**frac.precision))
-            Dem=int(abs(Dem*10**frac.precision))
+            num=int(abs(Num*10**frac.precision))
+            dem=int(abs(Dem*10**frac.precision))
 
-        if Num!=0:
-            nwd=NWD(Num,Dem)
+        if num!=0:
+            gcd=Greatest_common_divisor(num,dem)
         else:
-            nwd=1
-            Dem=1
-        self.num=Num//nwd
-        self.dem=Dem//nwd
+            gcd=1
+            dem=1
+        self.num=num//gcd
+        self.dem=dem//gcd
         
     def __add__(self, other):
         if type(other)!=frac:

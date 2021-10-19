@@ -235,61 +235,57 @@ class frac:
     def __int__(self):
         return self.sign*(self.num//self.dem)
         
-#frac.precision=2
-#a=frac(2,3)
-#b=frac(1,2)
-#b*2
-
-"""
-import math
-a=frac(1,2)
-b=frac(1,3)
-c=frac(-1/2)
-f=frac(math.pi)
-
-a+b
-a-b
-a*b
-a+c
-a-c
-a*5
-frac.mixed=True
-a*5
-f
-frac.decimal=True
-f
-h=a**b
-h
-h=h**3
-h
-h-a
-a-1/2
-frac(1/4)**a
-frac.decimal=False
-frac.mixed=False
-a=frac(1,1)
-a
-a/2
-a>1/2
-a/2>1/2
-a/2>=1/2
-1/2>=a/2
-a/2>=frac(1/3)
-1==a
-(a/2).as_integer_ratio()
-
-frac.decimal=True
-k=-f
-k
-k+f
-
-frac.decimal=False
 
 
-float(f)
-int(f)
-f
-math.sin(f)
-math.sin(math.pi)-math.sin(f)
-math.exp(frac(1,2))-math.e**(1/2)
-"""
+if __name__=="__main__":
+    import math
+    a=frac(1,2)
+    b=frac(1,3)
+    c=frac(-1/2)
+    f=frac(math.pi)
+
+    a+b
+    a-b
+    a*b
+    a+c
+    a-c
+    a*5
+    frac.mixed=True
+    a*5
+    f
+    frac.decimal=True
+    f
+    h=a**b
+    h
+    h=h**3
+    h
+    h-a
+    a-1/2
+    frac(1/4)**a
+    frac.decimal=False
+    frac.mixed=False
+    a=frac(1,1)
+    a
+    a/2
+    a>1/2
+    a/2>1/2
+    a/2>=1/2
+    1/2>=a/2
+    a/2>=frac(1/3)
+    1==a
+    (a/2).as_integer_ratio()
+
+    frac.decimal=True
+    k=-f
+    k
+    k+f
+
+    frac.decimal=False
+
+
+    float(f)
+    int(f)
+    f
+    math.sin(f)
+    math.sin(math.pi)-math.sin(f)
+    math.exp(frac(1,2))-math.e**(1/2)

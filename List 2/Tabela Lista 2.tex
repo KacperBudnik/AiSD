@@ -1,0 +1,37 @@
+\documentclass[a4paper, 50pt]{standalone}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{mathtools,amsthm,amssymb,icomma,upgreek,xfrac,enumitem,multicol,paracol,esvect}
+%\usepackage{bigints}
+%\usepackage{relsize,exscale}
+%\usepackage{tabularht}
+%\usepackage[margin=2cm]{geometry}
+%%\geometry{a4paper, left=0mm, right=0mm, top=0mm}
+%\usepackage{paracol}
+%\usepackage{array}
+
+
+
+\begin{document}
+	
+\begin{tabular}{|l|c|c|c|c|c|c|}
+	\hline
+	funkcja\phantom{12345}n &     12      &     200     &    1000     &    2100     &   1001   &  50566   \\ \hline
+	fun0(n)                    & 855 $\mu$s  &   5.34 s    &  $\infty$   &  $\infty$   & $\infty$ & $\infty$ \\ \hline
+	fun(n)                     & 194 $\mu$s  &   945 ms    &  $\infty$   &  $\infty$   & $\infty$ & $\infty$ \\ \hline
+	fun2(n)                    & 17.9 $\mu$s &   4.86 ms   &   130 ms    &   187 ms    &  654 ms  & $\infty$ \\ \hline
+	fun3(n)                    & 8.44 $\mu$s & 161 $\mu$s  &   1.02 ms   &   1.53 ms   & 5.48 ms  & $\infty$ \\ \hline
+	fun3\_v2(n)                & 3.09 $\mu$s & 38.3 $\mu$s & 37.4 $\mu$s & 3.19 $\mu$s & 35.3 ms  & $\infty$ \\ \hline
+	fun4\_v2(n)                & 4.44 $\mu$s & 21.1 $\mu$s & 21.1 $\mu$s & 4.41 $\mu$s & 1.62 ms  &  511ms   \\ \hline
+	fun3\_v2(n,True)           & 3.43 $\mu$s &   1.36 ms   &   34.8 ms   &   163 ms    &  35 ms   & $\infty$ \\ \hline
+\end{tabular}
+
+	
+
+	
+	
+	
+	
+\end{document}

@@ -1,0 +1,119 @@
+\documentclass[50pt]{mwart}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{mathtools,amsthm,amssymb,icomma,upgreek,xfrac,enumitem,multicol,paracol,esvect}
+%\usepackage{bigints}
+%\usepackage{relsize,exscale}
+%\usepackage{tabularht}
+\usepackage[margin=2cm]{geometry}
+%%\geometry{a4paper, left=0mm, right=0mm, top=0mm}
+%\usepackage{paracol}
+%\usepackage{array}
+
+
+
+\begin{document}
+
+\section{Grupa 1}
+\begin{align*}
+f_1(n) &= n^{0.999999}\log n\\ 
+ f_2(n) &= 10000000n \\
+ f_3(n) &= 1.000001^n\\
+ f_4(n) &= n^2 
+\end{align*}
+		
+
+Twierdzę, że
+$$ f_1\preccurlyeq f_2\preccurlyeq f_4 \preccurlyeq f_3$$
+
+\begin{proof}
+
+$f_1\preccurlyeq f_2$
+
+\noindent$ \lim\limits_{n\to\infty} \frac{f_1(n)}{f_2(n)} = \lim\limits_{n\to\infty} \frac{n^{0.999999}\log n}{10000000n} = \lim\limits_{n\to\infty} \frac{ n*n^{-10^6}\log n}{10^7n} = \lim\limits_{n\to\infty} \frac{1}{10^7} \frac{\ln n}{n^{10^{-6}}} \overset{H}{=} \lim\limits_{n\to\infty} \frac{1}{10} \frac{\frac{1}{n}}{n^{10^{-6}-1}}= \frac{1}{10} \lim\limits_{n\to\infty} \frac{1}{n^{10^{-6}}}=0 $\newline
+
+$f_2\preccurlyeq f_4$
+
+\noindent$ \lim\limits_{n\to\infty} \frac{f_2(n)}{f_4(n)} =  \lim\limits_{n\to\infty} \frac{10^7n}{n^2} \overset{H}{=} \lim\limits_{n\to\infty} \frac{10^7}{2n} = 0$\newline
+
+
+$f_4\preccurlyeq f_3$
+
+\noindent$ \lim\limits_{n\to\infty} \frac{f_4(n)}{f_3(n)} = \lim\limits_{n\to\infty} \frac{n^2}{1.000001^n} \overset{H}{=} \lim\limits_{n\to\infty} \frac{2n}{1.000001^n\ln(1.000001)} \overset{H}{=} \lim\limits_{n\to\infty} \frac{2}{1.000001^n\ln^2(1.000001)} = 0$\newline
+\end{proof}
+
+\section{Grupa 2}
+\begin{align*}
+f_1(n) &= 2^{100n}\\
+f_2(n) &= {n\choose2}\\
+ f_3(n) &= n\sqrt n
+\end{align*}
+
+Twierdzę, że
+$$ f_3\preccurlyeq f_2 \preccurlyeq f_1$$
+
+\begin{proof}
+	$ f_3\preccurlyeq f_1 $
+	
+	\noindent$ \lim\limits_{n\to\infty} \frac{f_3(n)}{f_2(n)} = \lim\limits_{n\to\infty} \frac{n\sqrt n}{{n\choose2}} = \lim\limits_{n\to\infty} \frac{n\sqrt n}{\frac{n!}{2!(n-2)!}} = \lim\limits_{n\to\infty} \frac{n\sqrt n}{n(n-1)} \overset{H}{=} \lim\limits_{n\to\infty} \frac{3\sqrt n}{2n - 1} \overset{H}{=} \lim\limits_{n\to\infty} \frac{3}{4\sqrt n} = 0$\newline
+	
+	$ f_2 \preccurlyeq f_1 $
+	
+	\noindent$ \lim\limits_{n\to\infty} \frac{f_2(n)}{f_1(n)} = \lim\limits_{n\to\infty} \frac{{n\choose2}}{2^{100n}} = \lim\limits_{n\to\infty} \frac{\frac{n!}{2!(n-2)!}}{2^{100n}} = \lim\limits_{n\to\infty} \frac{n(n-1)}{2^{100n+1}} \overset{H}{=} \lim\limits_{n\to\infty} \frac{2n - 1}{2^{100n+1}\ln2\cdot100} \overset{H}{=} \lim\limits_{n\to\infty} \frac{2}{2^{100n+1}\ln^2 2\cdot10^4} = 0$\newline
+\end{proof}
+
+\section{Grupa 3}
+\begin{align*}
+f_1(n) &= n^{\sqrt n}\\
+f_2(n) &= 2^n\\
+ f_3(n) &= 10^n2^{n/2} \\
+ f_4(n) &= \sum\limits^n_{i=1}(i+1)
+\end{align*}
+
+Twierdzę, że
+$$ f_4\preccurlyeq f_1\preccurlyeq f_2\preccurlyeq f_3$$
+
+\begin{proof}
+	$ f_4\preccurlyeq f_1 $
+
+\noindent$ \lim\limits_{n\to\infty} \frac{f_4(n)}{f_1(n)} = \lim\limits_{n\to\infty} \frac{\sum^n_{i=1}(i+1)}{n^{\sqrt n}} = 0 $, bo
+$$ 0 \le \frac{f_4(n)}{f_1(n)} = \frac{\frac{1}{2}n(n+1)}{n^{\sqrt n}} \le \frac{n^2 + n}{2n^3} \le \frac{2n^2}{2n^3}  = \frac{1}{n} \overset{n\to\infty}{\to} 0 $$
+i z twierdzenia o 3 ciągach\newline
+
+$ f_1 \preccurlyeq f_2 $
+
+\noindent$ \lim\limits_{n\to\infty} \frac{f_1(n)}{f_2(n)} = \lim\limits_{n\to\infty} \frac{n^{\sqrt n}}{2^n} = \lim\limits_{n\to\infty} \frac{\exp({\ln n \sqrt n})}{\exp({n \ln 2})} = \exp\left(\lim\limits_{n\to\infty} \ln n \sqrt n - n\ln2 \right) = \exp\left(\lim\limits_{n\to\infty} n \left(\frac{\ln n}{\sqrt n\ln 2} - 1\right)\ln 2 \right) \\= 2\exp\left(\lim\limits_{n\to\infty} n \cdot \lim\limits_{n\to\infty} \left(\frac{\ln n}{\sqrt n\ln 2} - 1\right)\right) = 2\exp\left(\lim\limits_{n\to\infty} n \cdot \left(\lim\limits_{n\to\infty}\frac{\ln n}{\sqrt n\ln 2} - \lim\limits_{n\to\infty} 1\right)\right) \\\overset{H}{=} 2\exp\left(\lim\limits_{n\to\infty} n \cdot \left(\lim\limits_{n\to\infty}\frac{\frac{1}{n}}{\frac{\ln 2}{2\sqrt n}} - \lim\limits_{n\to\infty} 1\right)\right) = 2\exp\left(\lim\limits_{n\to\infty} n \cdot \left(\lim\limits_{n\to\infty}\frac{2\sqrt n}{n\ln 2} - \lim\limits_{n\to\infty} 1\right)\right) \\= 2\exp\left(\lim\limits_{n\to\infty} n \cdot \left(\lim\limits_{n\to\infty}\frac{2}{\sqrt n\ln 2} - \lim\limits_{n\to\infty} 1\right)\right){ = 2\exp\left( \infty \cdot \left( 0 - 1 \right)\right) = 2\exp\left(-\infty)\right)} = 0$\newline
+
+$ f_2 \preccurlyeq f_3 $
+
+\noindent$ \lim\limits_{n\to\infty} \frac{f_2(n)}{f_3(n)} = \lim\limits_{n\to\infty} \frac{{2^n}}{10^n2^{n/2}} = \lim\limits_{n\to\infty} \frac{2^n}{10^n{\sqrt2}^n} = \lim\limits_{n\to\infty} {\left(\frac{2}{10{\sqrt2}}\right)}^n = \lim\limits_{n\to\infty} {\left(\frac{1}{5{\sqrt2}}\right)}^n = 0$\newline
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

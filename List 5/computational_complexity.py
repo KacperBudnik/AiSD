@@ -22,6 +22,6 @@ def n(m=15,tim=1):
     
     times=np.zeros(m)
     for i in range(m):
-        times[i]=solve_n_time(2**i,times=tim)
+        times[i]=solve_n_time(2**i,times=tim)/tim
         
     return fit(curve,[2**i for i in range(m)], times)[0][2] # = 2.77 za pierwszym, 2.24 za drugim

@@ -1,0 +1,9 @@
+digraph {
+	2 -> 3
+	2 -> 2
+	1 -> 2
+	Hakuna -> Matata
+	Matata -> "Jak cudownie to brzmi!"
+	"Jak cudownie to brzmi!" -> "I wszyscy razem!"
+	"I wszyscy razem!" -> Hakuna
+}
